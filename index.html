@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Reader</title>
+<meta name="application-name" content="Reader" />
+<meta name="apple-mobile-web-app-title" content="Reader" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black" />
+
+<style>
+
+
+@media (prefers-color-scheme: dark) {
+
+
+html{
+background-color: black;
+color: white;
+overflow-wrap: break-word;
+}
+
+
+}
+
+</style>
+</head>
+<body>
+<div>
+<button onclick="vk_go();" style="font-size:2rem">
+Go
+</button>
+</div>
+<div>
+<textarea id="vk_doccontent" style="height:100vh"></textarea>
+</div>
+
+<script>(() => {
+
+window.vk_go = () => {
+const page_html = localStorage.getItem("vk-activecontext");
+document.body.innerHTML = page_html;
+}
+
+const doc_ta = document.getElementById("vk_doccontent");
+
+document.body.onload = () => {
+try {
+doc_ta.value = localStorage.getItem("vk-activecontent") || "";
+}catch(ex) {
+alert("got error: "+ex+"\n"+ex.stack);
+}
+}
+doc_ta.oninput = () => {
+
+try {
+localStorage.setItem("vk-activecontent", doc_ta.value);
+}catch(ex) {
+alert("got error: "+ex+"\n"+ex.stack);
+}
+
+};
+
+
+})()</script>
+
+
+</body>
+</html>
