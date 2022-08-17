@@ -40,6 +40,13 @@ Go
 <script>(() => {
 
 window.vk_go = () => {
+try {
+navigator.storage.persist().catch(e => {
+alert("Epersistent not granted");
+});
+}catch(e){
+alert("Ecannot persist");
+}
 const page_html = localStorage.getItem("vk-activecontent");
 document.body.innerHTML = page_html;
 }
