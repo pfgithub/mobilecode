@@ -29,18 +29,18 @@ overflow-wrap: break-word;
 </head>
 <body>
 <div>
-<button onclick="vk_go();" style="font-size:2rem">
+<button onclick="vk_go();">
 Go
 </button>
 </div>
 <div>
-<textarea id="vk_doccontent" style="height:100vh"></textarea>
+<textarea id="vk_doccontent" style="height:100vh;width:100%"></textarea>
 </div>
 
 <script>(() => {
 
 window.vk_go = () => {
-const page_html = localStorage.getItem("vk-activecontext");
+const page_html = localStorage.getItem("vk-activecontent");
 document.body.innerHTML = page_html;
 }
 
